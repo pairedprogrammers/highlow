@@ -9,6 +9,10 @@ function($scope, $state, $stateParams, HighscoreFactory) {
     $scope.highscoreName = HighscoreFactory.getPreviousName();
     
     $scope.addHighscore = function() {
+    	if($scope.highscoreName == null || $scope.highscoreName.trim().length === 0) {
+    		$scope.highscoreName = 'Gifted Gamer';
+    	}
+    	
     	HighscoreFactory.addHighscore($scope.score, $scope.highscoreName);
     	$state.go('gameover', {
     		score: $scope.score,
