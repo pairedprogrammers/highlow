@@ -1,10 +1,21 @@
-angular.module('highlow').controller('GameCtrl', ['$scope',  'GameFactory', 'HighscoreFactory', function($scope, GameFactory, HighscoreFactory) {
+angular.module('highlow').controller('GameCtrl', ['$scope',  'GameFactory', 'HighscoreFactory', 'hotkeys',
+function($scope, GameFactory, HighscoreFactory, hotkeys) {
     'use strict';
     
     $scope.low = 0;
     $scope.high = 99;
     
     var game;
+    
+    var setupNewGameHotKey = function() {
+		hotkeys.add({
+			combo: 'n',
+			description: 'Start a new game',
+			callback: function() {
+				$scope.newGame();
+			}
+		});
+    };
     
     var updateScreen = function() {
     	$scope.thirdLast = '';
@@ -23,9 +34,18 @@ angular.module('highlow').controller('GameCtrl', ['$scope',  'GameFactory', 'Hig
         	$scope.thirdLast = previousNumbers[previousNumbers.length - 3];
         }
         
-        if(!game.isInProgress() && HighscoreFactory.isHighscore($scope.score)) {
-        	$scope.highscoreName = HighscoreFactory.getPreviousName();
-        	$scope.highscore = true;
+        // Game is no longer in progress
+        if(!game.isInProgress()) {
+        	hotkeys.del('down');
+        	hotkeys.del('up');
+        	
+        	// A highscore was set
+        	if(HighscoreFactory.isHighscore($scope.score)) {
+        		$scope.highscoreName = HighscoreFactory.getPreviousName();
+	        	$scope.highscore = true;
+        	} else {
+        		setupNewGameHotKey();
+        	}
         }
     };
     
@@ -44,12 +64,30 @@ angular.module('highlow').controller('GameCtrl', ['$scope',  'GameFactory', 'Hig
         $scope.highscoreName = '';
         $scope.highscoreAccepted = false;
         updateScreen();
+        hotkeys.del('n');
+        
+		hotkeys.add({
+			combo: 'down',
+			description: 'The next number will be lower',
+			callback: function() {
+				$scope.lower();
+			}
+		});
+	    
+		hotkeys.add({
+			combo: 'up',
+			description: 'The next number will be higher',
+			callback: function() {
+				$scope.higher();
+			}
+		});
     };
     
     $scope.addHighscore = function() {
     	HighscoreFactory.addHighscore($scope.score, $scope.highscoreName);
     	$scope.highscore = false;
     	$scope.highscoreAccepted = true;
+		setupNewGameHotKey();
     };
     
     $scope.newGame();

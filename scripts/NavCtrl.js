@@ -1,4 +1,5 @@
-angular.module('highlow').controller('NavCtrl', ['$scope', '$location', '$modal', function($scope, $location, $modal) {
+angular.module('highlow').controller('NavCtrl', ['$scope', '$location', '$modal', 'hotkeys',
+function($scope, $location, $modal, hotkeys) {
     'use strict';
 
     $scope.showHighscores = function() {
@@ -18,4 +19,12 @@ angular.module('highlow').controller('NavCtrl', ['$scope', '$location', '$modal'
         }, function() {
         });
     };
+    
+	hotkeys.add({
+		combo: 'h',
+		description: 'Display the high scores',
+		callback: function() {
+			$scope.showHighscores();
+		}
+	});
 }]);

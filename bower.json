@@ -20,6 +20,7 @@
     "fontawesome": "~4.x.x",
     "angular-bootstrap": "~0.12.1",
     "lodash": "~3.x.x",
-    "angular-local-storage": "~0.1.5"
+    "angular-local-storage": "~0.1.5",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.4.x"
   }
 }
