@@ -2,8 +2,6 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
     'use strict';
     
     var maxScores = 10;
-    var highscores = null;
-    var previousName;
       
     var initializeHighscores = function() {
     	return [
@@ -29,12 +27,14 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
     
     return {
         getHighscores: function() {
-        	if(highscores == null) {
-        		highscores = initializeHighscores();
+        	var scores = localStorageService.get('highscores');
+        	
+        	if(scores == null) {
+        		scores = initializeHighscores();
         	}
         	
-        	highscores = sortHighscores(highscores);
-            return highscores;
+        	scores = sortHighscores(scores);
+            return scores;
         },
         
         isHighscore: function(score) {
@@ -46,18 +46,17 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
         	var scores = this.getHighscores();
         	scores.push({score: score, name: name});
         	scores = sortHighscores(scores);
-
-			highscores = scores;
-			previousName = name;
+        	
+			localStorageService.set('previousName', name);
+			localStorageService.set('highscores', scores);
         },
         
         getPreviousName: function() {
-        	return previousName;
+        	return localStorageService.get('previousName');;
         },
         
         reset: function() {
-        	highscores = null;
-        	previousName = '';
+        	localStorageService.clearAll();
         }
     };
 }]);

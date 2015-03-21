@@ -1,55 +1,26 @@
-<div class="text-center">
-    
-    <h1 ng-show="inprogress">Score: <span class="label label-success">{{score}}</span></h1>
-    
-    <h1 ng-hide="inprogress"><strong>Game Over! Your Final Score is: <span class="label label-success">{{score}}</span></strong></h1>
-    
-    <h2>Previous Number</h2>
-    <div class="alert" ng-class="{'alert-info': inprogress, 'alert-danger': !inprogress}" role="alert">
-    	<div class="row text-center last-numbers">
-    		<div class="col-sm-offset-1 col-sm-2 hidden-xs">
-    			{{thirdLast}}
-    		</div>
-    		<div class="col-sm-2 hidden-xs">
-    			{{secondLast}}
-    		</div>
-    		<div class="col-sm-2 col-xs-12 last-number">
-    			{{lastNumber}}
-    		</div>
-    	</div>
-    </div>
+<h1>Score: <span class="label label-success">{{score}}</span></h1>
 
-    <div ng-show="inprogress">
-        <p class="lead">The next number will be between {{low}} and {{high}}. Will it be higher or lower than {{lastNumber}}?</p>
-        <div class="row guess-row">
-        	<div class="col-xs-6 guess-button">
-        		<button type="button" class="btn btn-default btn-lg btn-block" ng-click="lower()"><i class="fa fa-arrow-circle-down"></i> Lower</button>
-        	</div>
-        	<div class="col-xs-6 guess-button">
-            	<button type="button" class="btn btn-default btn-lg btn-block" ng-click="higher()"><i class="fa fa-arrow-circle-up"></i> Higher</button>
-        	</div>
-        </div>
-    </div>
-    
-    <p ng-show="highscoreAccepted">
-    	Your score has been recorded!
-    </p>
-
-	<div class="row" ng-hide="inprogress">
-		<div ng-show="highscore" class="col-xs-12">
-			<p>Congratulations! You set a high score! Enter your name:</p>
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Your awesome name" ng-model="highscoreName" ng-keyup="$event.keyCode == 13 ? addHighscore() : null">
-				<span class="input-group-btn">
-					<button class="btn btn-default" type="button" ng-click="addHighscore()">OK</button>
-				</span>
-			</div>
+<h2>Previous Number</h2>
+<div class="alert alert-info" role="alert">
+	<div class="row text-center last-numbers">
+		<div class="col-sm-offset-1 col-sm-2 hidden-xs">
+			{{thirdLast}}
 		</div>
-		<div ng-hide="highscore">
-			<div class="col-sm-3"></div>
-		    <div class="col-sm-6 col-xs-12 guess-button">
-				<button type="button" class="btn btn-success btn-lg btn-block" ng-click="newGame()"><i class="fa fa-refresh"></i> New Game</button>
-		    </div>
-	    </div>
-   	</div>
+		<div class="col-sm-2 hidden-xs">
+			{{secondLast}}
+		</div>
+		<div class="col-sm-2 col-xs-12 last-number">
+			{{lastNumber}}
+		</div>
+	</div>
+</div>
+
+<p class="lead">The next number will be between {{low}} and {{high}}. Will it be higher or lower than {{lastNumber}}?</p>
+<div class="row guess-row">
+	<div class="col-xs-6 guess-button">
+		<button type="button" class="btn btn-default btn-lg btn-block" ng-click="lower()"><i class="fa fa-arrow-circle-down"></i> Lower</button>
+	</div>
+	<div class="col-xs-6 guess-button">
+    	<button type="button" class="btn btn-default btn-lg btn-block" ng-click="higher()"><i class="fa fa-arrow-circle-up"></i> Higher</button>
+	</div>
 </div>

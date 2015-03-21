@@ -36,13 +36,17 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div class="container" ui-view></div>
+    <div class="container">
+    	<div class="text-center">
+    		<div ui-view></div>
+    	</div>
+	</div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
@@ -54,6 +58,8 @@
     <script src="scripts/GameFactory.js"></script>
     <script src="scripts/HighscoreFactory.js"></script>
     <script src="scripts/Lodash.js"></script>
+    <script src="scripts/GameOverCtrl.js"></script>
+    <script src="scripts/HighscoreEntryCtrl.js"></script>
 </body>
 
 </html>

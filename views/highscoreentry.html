@@ -1,0 +1,28 @@
+<h1><strong>Game Over! Your Final Score is: <span class="label label-success">{{score}}</span></strong></h1>
+    
+<h2>Previous Number</h2>
+<div class="alert alert-danger" role="alert">
+	<div class="row text-center last-numbers">
+		<div class="col-sm-offset-1 col-sm-2 hidden-xs">
+			{{thirdLast}}
+		</div>
+		<div class="col-sm-2 hidden-xs">
+			{{secondLast}}
+		</div>
+		<div class="col-sm-2 col-xs-12 last-number">
+			{{lastNumber}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<p>Congratulations! You set a high score! Enter your name:</p>
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Your awesome name" ng-model="highscoreName" ng-keyup="$event.keyCode == 13 ? addHighscore() : null">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="addHighscore()">OK</button>
+			</span>
+		</div>
+	</div>
+</div>
