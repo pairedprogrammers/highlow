@@ -1,4 +1,4 @@
-angular.module('highlow', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'cfp.hotkeys'])
+angular.module('highlow', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'cfp.hotkeys', 'ngTouch'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     	'use strict';
     	
