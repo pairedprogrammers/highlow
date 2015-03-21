@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h3 class="modal-title">Highscores</h3>
+</div>
+<div class="modal-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="score in scores">
+                <td>{{score.name}}</td>
+                <td>{{score.score}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button ng-hide="showReset" class="btn btn-danger pull-left" ng-click="reset()">Reset Highscores</button>
+	<div ng-show="showReset" class="pull-left">
+		<span>Are you sure?</span>
+    	<button class="btn btn-danger" ng-click="confirmReset()">Yes</button>
+    	<button class="btn btn-success" ng-click="declineReset()">No</button>
+	</div>
+    <button class="btn btn-primary" ng-click="close()">Close</button>
+</div>

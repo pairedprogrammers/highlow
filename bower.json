@@ -1,0 +1,25 @@
+{
+  "name": "high-low",
+  "version": "0.0.0",
+  "authors": [
+    "ducttape12 <ducttape12@yahoo.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".c9"
+  ],
+  "dependencies": {
+    "angular": "~1.3.x",
+    "bootstrap": "~3.3.x",
+    "angular-ui-router": "~0.2.x",
+    "fontawesome": "~4.x.x",
+    "angular-bootstrap": "~0.12.1",
+    "lodash": "~3.x.x",
+    "angular-local-storage": "~0.1.5"
+  }
+}

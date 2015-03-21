@@ -1,0 +1,23 @@
+html, body {
+  box-sizing: border-box;
+}
+
+.last-numbers {
+	font-size: 3em;
+}
+
+.last-number {
+	font-weight: bold;
+}
+
+.guess-button {
+    margin: 0.25em 0;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.highscore-button {
+	color: white;
+}
