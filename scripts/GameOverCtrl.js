@@ -13,7 +13,7 @@ function($scope, $state, $stateParams, hotkeys) {
     };
     
 	hotkeys.bindTo($scope).add({
-		combo: 'n',
+		combo: 'enter',
 		description: 'New game',
 		callback: function() {
 			$scope.newGame();
