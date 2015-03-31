@@ -7,7 +7,7 @@
   <li>Responsive design.  Play on a desktop, laptop, tablet, or phone!</li>
 </ul>
 
-<p>In order to run High Low, pull down the repository.  Then run the following:</p>
+<p>In order to run High Low, pull down the repository.  Then run the following:. (You'll need node.js and bower already installed.  See <a href="https://nodejs.org/">nodejs.org</a> and <a href="http://bower.io/">bower.io</a> for details.)</p>
 <pre>bower install</pre>
 <p>Next, open index.html in your web browser</p>
 
