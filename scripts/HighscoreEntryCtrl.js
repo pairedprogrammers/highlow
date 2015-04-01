@@ -8,18 +8,44 @@ function($scope, $state, $stateParams, HighscoreFactory) {
     $scope.lastNumber = $stateParams.lastNumber;
     $scope.highscoreName = HighscoreFactory.getPreviousName();
     
+    switch($stateParams.highscoreType) {
+        case HighscoreFactory.getHighscoreTypes().Local:
+            $scope.type = 'local';
+            break;
+        
+        case HighscoreFactory.getHighscoreTypes().Leaderboard:
+            $scope.type = 'leaderboard';
+            break;
+            
+        case HighscoreFactory.getHighscoreTypes().Both:
+            $scope.type = 'local and leaderboard';
+            break;
+            
+        default:
+            $state.go('gameover', {
+                score: $scope.score,
+                thirdLast: $scope.thirdLast,
+                secondLast: $scope.secondLast,
+                lastNumber: $scope.lastNumber,
+                highscoreAdded: false,
+                highscoreType: $stateParams.highscoreType
+            });
+    }
+    
     $scope.addHighscore = function() {
     	if($scope.highscoreName == null || $scope.highscoreName.trim().length === 0) {
     		$scope.highscoreName = 'Gifted Gamer';
     	}
     	
-    	HighscoreFactory.addHighscore($scope.score, $scope.highscoreName);
-    	$state.go('gameover', {
-    		score: $scope.score,
-    		thirdLast: $scope.thirdLast,
-    		secondLast: $scope.secondLast,
-    		lastNumber: $scope.lastNumber,
-    		highscoreAdded: true
-    	});
+    	HighscoreFactory.addHighscore($scope.score, $scope.highscoreName).then(function() {
+            $state.go('gameover', {
+                score: $scope.score,
+                thirdLast: $scope.thirdLast,
+                secondLast: $scope.secondLast,
+                lastNumber: $scope.lastNumber,
+                highscoreAdded: true,
+                highscoreType: $stateParams.highscoreType
+            });
+        });
     };
 }]);

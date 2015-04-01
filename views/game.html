@@ -1,26 +1,31 @@
-<h1>Score: <span class="label label-success">{{score}}</span></h1>
+<div>
+    <h1>Score: <span class="label label-success">{{score}}</span></h1>
 
-<h2>Previous Number</h2>
-<div class="alert alert-info" role="alert">
-	<div class="row text-center last-numbers">
-		<div class="col-sm-offset-1 col-sm-2 hidden-xs">
-			{{thirdLast}}
-		</div>
-		<div class="col-sm-2 hidden-xs">
-			{{secondLast}}
-		</div>
-		<div class="col-sm-2 col-xs-12 last-number">
-			{{lastNumber}}
-		</div>
-	</div>
+    <h2>Previous Number</h2>
+    <div class="alert alert-info" role="alert">
+        <div class="row text-center last-numbers">
+            <div class="col-sm-offset-1 col-sm-2 hidden-xs">
+                {{thirdLast}}
+            </div>
+            <div class="col-sm-2 hidden-xs">
+                {{secondLast}}
+            </div>
+            <div class="col-sm-2 col-xs-12 last-number">
+                {{lastNumber}}
+            </div>
+        </div>
+    </div>
+
+    <p class="lead">The next number will be between {{low}} and {{high}}. Will it be higher or lower than {{lastNumber}}?</p>
+    <div class="row guess-row" ng-show="game.isInProgress()">
+        <div class="col-xs-6 guess-button">
+            <button type="button" class="btn btn-default btn-lg btn-block" ng-click="lower()"><i class="fa fa-arrow-circle-down"></i> Lower</button>
+        </div>
+        <div class="col-xs-6 guess-button">
+            <button type="button" class="btn btn-default btn-lg btn-block" ng-click="higher()"><i class="fa fa-arrow-circle-up"></i> Higher</button>
+        </div>
+    </div>
+<div ng-hide="game.isInProgress()">
+    <h1><i class="fa fa-spinner fa-pulse"></i> Please wait...</h1>
 </div>
-
-<p class="lead">The next number will be between {{low}} and {{high}}. Will it be higher or lower than {{lastNumber}}?</p>
-<div class="row guess-row">
-	<div class="col-xs-6 guess-button">
-		<button type="button" class="btn btn-default btn-lg btn-block" ng-click="lower()"><i class="fa fa-arrow-circle-down"></i> Lower</button>
-	</div>
-	<div class="col-xs-6 guess-button">
-    	<button type="button" class="btn btn-default btn-lg btn-block" ng-click="higher()"><i class="fa fa-arrow-circle-up"></i> Higher</button>
-	</div>
 </div>

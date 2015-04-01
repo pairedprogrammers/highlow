@@ -15,12 +15,12 @@ angular.module('highlow', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'c
             })
             .state('highscoreentry', {
                 templateUrl: 'views/highscoreentry.html',
-                params: { score: null, thirdLast: null, secondLast: null, lastNumber: null },
+                params: { score: null, thirdLast: null, secondLast: null, lastNumber: null, highscoreType: null },
                 controller: 'HighscoreEntryCtrl'
             })
             .state('gameover', {
                 templateUrl: 'views/gameover.html',
-                params: { score: null, thirdLast: null, secondLast: null, lastNumber: null, highscoreAdded: false },
+                params: { score: null, thirdLast: null, secondLast: null, lastNumber: null, highscoreAdded: false, highscoreType: null },
                 controller: 'GameOverCtrl'
             });
     }])

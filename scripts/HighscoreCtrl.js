@@ -2,12 +2,19 @@ angular.module('highlow').controller('HighscoreCtrl', ['$scope', '$modalInstance
 	'use strict';
 
     HighscoreFactory.getHighscores().then(function(scores) {
-       $scope.scores = scores.local; 
+       $scope.scores = scores; 
     });
-
-  	$scope.scores = HighscoreFactory.getHighscores();
-  	$scope.showReset = false;
-
+    
+    $scope.localSelected = function() {
+        $scope.showReset = false;
+        $scope.showResetOptions = true;
+    };
+    
+    $scope.leaderboardsSelected = function() {
+        $scope.showReset = false;
+        $scope.showResetOptions = false;
+    };
+    
   	$scope.close = function() {
     	$modalInstance.dismiss('close');
   	};
@@ -25,4 +32,7 @@ angular.module('highlow').controller('HighscoreCtrl', ['$scope', '$modalInstance
   	$scope.declineReset = function() {
   		$scope.showReset = false;
   	};
+    
+    $scope.showReset = false;
+    $scope.showResetOptions = true;
 }]);
