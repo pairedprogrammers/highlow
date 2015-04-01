@@ -39,8 +39,6 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
         	
         if(local == null) {
             local = initializeLocalScores();
-        } else {
-            local = JSON.parse(local);
         }
 
         local = sortHighscores(local);
@@ -108,7 +106,7 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
             var self = this;
             
             return $q(function(resolve) {
-                self.isHighscore().then(function(type) {
+                self.isHighscore(score).then(function(type) {
                     var resolveAtEnd = true;
                     
                     if(type === HighscoreType.Local || type === HighscoreType.Both) {
@@ -117,12 +115,11 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
                         local = sortHighscores(local);
 
                         localStorageService.set('previousName', name);
-                        localStorageService.set('highscores', JSON.stringify(local));
+                        localStorageService.set('highscores', local);
                     }
                     
                     if(type === HighscoreType.Leaderboard || type === HighscoreType.Both) {
                         resolveAtEnd = false;
-                        localStorageService.set('previousName', name);
                         
                         retrieveLeaderboards().then(function(leaderboards) {
                             leaderboards.$add({score: score, name: name});
@@ -130,6 +127,8 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
                         }, function() {
                             resolve();
                         });
+                        
+                        localStorageService.set('previousName', name);
                     }
                     
                     if(resolveAtEnd) {
@@ -146,6 +145,10 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
         
         reset: function() {
         	localStorageService.clearAll();
+        },
+        
+        getMaxNameLength: function() {
+            return 50;
         }
     };
 }]);

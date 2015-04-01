@@ -7,6 +7,7 @@ function($scope, $state, $stateParams, HighscoreFactory) {
     $scope.secondLast = $stateParams.secondLast;
     $scope.lastNumber = $stateParams.lastNumber;
     $scope.highscoreName = HighscoreFactory.getPreviousName();
+    $scope.maxNameLength = HighscoreFactory.getMaxNameLength();
     
     switch($stateParams.highscoreType) {
         case HighscoreFactory.getHighscoreTypes().Local:

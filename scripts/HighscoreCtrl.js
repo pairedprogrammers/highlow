@@ -1,9 +1,13 @@
 angular.module('highlow').controller('HighscoreCtrl', ['$scope', '$modalInstance', 'HighscoreFactory', function($scope, $modalInstance, HighscoreFactory) {
 	'use strict';
-
-    HighscoreFactory.getHighscores().then(function(scores) {
-       $scope.scores = scores; 
-    });
+	
+	var loadScores = function() {
+	    $scope.loading = true;
+        HighscoreFactory.getHighscores().then(function(scores) {
+            $scope.scores = scores;
+            $scope.loading = false;
+        });
+	};
     
     $scope.localSelected = function() {
         $scope.showReset = false;
@@ -26,7 +30,7 @@ angular.module('highlow').controller('HighscoreCtrl', ['$scope', '$modalInstance
   	$scope.confirmReset = function() {
   		$scope.showReset = false;
   		HighscoreFactory.reset();
-  		$scope.scores = HighscoreFactory.getHighscores();
+  		loadScores();
   	};
   	
   	$scope.declineReset = function() {
@@ -35,4 +39,6 @@ angular.module('highlow').controller('HighscoreCtrl', ['$scope', '$modalInstance
     
     $scope.showReset = false;
     $scope.showResetOptions = true;
+    $scope.maxNameLength = HighscoreFactory.getMaxNameLength();
+    loadScores();
 }]);
