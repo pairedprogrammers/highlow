@@ -1,6 +1,10 @@
 angular.module('highlow').controller('HighscoreCtrl', ['$scope', '$modalInstance', 'HighscoreFactory', function($scope, $modalInstance, HighscoreFactory) {
 	'use strict';
 
+    HighscoreFactory.getHighscores().then(function(scores) {
+       $scope.scores = scores.local; 
+    });
+
   	$scope.scores = HighscoreFactory.getHighscores();
   	$scope.showReset = false;
 

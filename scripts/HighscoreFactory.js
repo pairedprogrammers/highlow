@@ -1,9 +1,10 @@
-angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageService', function(Lodash, localStorageService) {
+angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageService', '$firebaseObject', '$q', function(Lodash, localStorageService, $firebaseObject, $q) {
     'use strict';
     
     var maxScores = 10;
+    var firebaseReference = new Firebase("https://high-low.firebaseio.com/");
       
-    var initializeHighscores = function() {
+    var initializeLocalScores = function() {
     	return [
 	        { score: 10, name: 'Courtney N. Nagel'},
 	        { score: 9, name: 'Olivia R. Spencer'},
@@ -27,14 +28,26 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
     
     return {
         getHighscores: function() {
-        	var scores = localStorageService.get('highscores');
+            return $q(function(resolve, reject) {
+                var scores = { local: [], leaderboards: [] };
+                
+                scores.local = localStorageService.get('highscores');
         	
-        	if(scores == null) {
-        		scores = initializeHighscores();
-        	}
-        	
-        	scores = sortHighscores(scores);
-            return scores;
+            	if(scores.local == null) {
+            		scores.local = initializeLocalScores();
+            	}
+            	
+            	scores.local = sortHighscores(scores.local);
+            	
+                scores.leaderboards = $firebaseObject(firebaseReference.child('leaderboards'));
+                
+                scores.leaderboards.$loaded().then(function() {
+                    resolve(scores);
+                }, function() {
+                    scores.leaderboards = null;
+                    resolve(scores);
+                });
+            });
         },
         
         isHighscore: function(score) {
