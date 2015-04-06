@@ -2,20 +2,20 @@ angular.module('highlow').factory('HighscoreFactory', ['Lodash', 'localStorageSe
     'use strict';
     
     var maxScores = 10;
-    var firebaseReference = new Firebase("https://high-low.firebaseio.com/leaderboards");
+    var firebaseReference = new Firebase("https://dev-high-low.firebaseio.com/leaderboards");
       
     var initializeLocalScores = function() {
     	return [
-	        { score: 10, name: 'Courtney N. Nagel'},
-	        { score: 9, name: 'Olivia R. Spencer'},
-	        { score: 8, name: 'Jonathan J. Williams'},
-	        { score: 7, name: 'Albert R. Moran'},
-	        { score: 6, name: 'Chester T. Eskew'},
-	        { score: 5, name: 'Donald D. Rich'},
-	        { score: 4, name: 'James N. Paul'},
-	        { score: 3, name: 'Anthony L. Drennen'},
-	        { score: 2, name: 'Leslie A. Hairston'},
-	        { score: 1, name: 'Darrell B. Blume'}
+	        { score: 10, name: 'Bandit Marie'},
+	        { score: 9, name: 'Olivia Spencer'},
+	        { score: 8, name: 'Jonathan Williams'},
+	        { score: 7, name: 'Albert Moran'},
+	        { score: 6, name: 'Chester Eskew'},
+	        { score: 5, name: 'Donald Rich'},
+	        { score: 4, name: 'James Paul'},
+	        { score: 3, name: 'Anthony Drennen'},
+	        { score: 2, name: 'Leslie Hairston'},
+	        { score: 1, name: 'Darrell Blume'}
 	      ];
     };
       

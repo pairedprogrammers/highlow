@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>High Low Leaderboard Reset</title>
+    <script src="//cdn.firebase.com/js/client/2.2.3/firebase-debug.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+    <script>
+    
+        var firebaseUrl = "https://dev-high-low.firebaseio.com/leaderboards";
+    
+        $(document).ready(function() {
+            'use strict';
+            
+	        $('#firebaseUrl').text(firebaseUrl);
+	        $('#firebaseUrlToReset').text(firebaseUrl);
+            
+            $('#reset').show();
+            $('#complete').hide();
+            $('#error').hide();
+        });
+    
+        function reset() {
+            'use strict';
+            
+            $('#complete').hide();
+            $('#error').hide();
+            
+            try {
+                
+                var leaderboards = new Firebase(firebaseUrl);
+                
+                leaderboards.remove();
+                
+                leaderboards.push({score: 10, name: 'Bandit Marie'});
+    	        leaderboards.push({ score: 9, name: 'Olivia Spencer'});
+    	        leaderboards.push({ score: 8, name: 'Jonathan Williams'});
+    	        leaderboards.push({ score: 7, name: 'Albert Moran'});
+    	        leaderboards.push({ score: 6, name: 'Chester Eskew'});
+    	        leaderboards.push({ score: 5, name: 'Donald Rich'});
+    	        leaderboards.push({ score: 4, name: 'James Paul'});
+    	        leaderboards.push({ score: 3, name: 'Anthony Drennen'});
+    	        leaderboards.push({ score: 2, name: 'Leslie Hairston'});
+    	        leaderboards.push({ score: 1, name: 'Darrell Blume'});
+    	        
+    	        $('#complete').fadeIn();
+            } catch(err) {
+                $('#errorText').text(err);
+                $('#error').fadeIn();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+          <h1>High Low Leaderboard Reset</h1>
+        </div>
+        
+        <div id="reset">
+            <div class="alert alert-danger" role="alert">
+                <h2>WARNING!</h2>
+                <p>This will remove all leaderboard high scores at the above URL <span id="firebaseUrlToReset"></span>.  This cannot be undone.  Do you wish to continue?!</p>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-danger btn-lg" onclick="reset()">Reset all leaderboards</button>
+            </div>
+        </div>
+        <div id="complete">
+            <div class="alert alert-success" role="alert">The leaderboards at <span id="firebaseUrl"></span> have been reset.</div>
+        </div>
+        <div id="error">
+            <div class="alert alert-warning" role="alert"><strong>An error has occurred: </strong><span id="errorText"></span></div>
+        </div>
+        
+    </div>
+</body>
+</html>

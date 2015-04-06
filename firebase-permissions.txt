@@ -1,0 +1,20 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "leaderboards": {
+      ".indexOn": ["score"],
+      ".read": true,
+      ".write": true,
+      "$score_id": {
+        ".validate": "newData.hasChildren(['score', 'name'])",
+        "score": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+          },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length <= 50"
+        }
+      }
+    }
+  }
+}
