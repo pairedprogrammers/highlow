@@ -7,7 +7,7 @@
   <li>Responsive design.  Play on a desktop, laptop, tablet, or smart phone!</li>
 </ul>
 
-<p><a href="http://www.keithott.com/highlow/">Check out the demo hosted at www.keithott.com</a>/p>
+<p><a href="http://www.keithott.com/highlow/">Check out the demo hosted at www.keithott.com</a></p>
 
 <h1>Running High Low</h1>
 <p>In order to run High Low, clone the repository.  Then run the following command. (You'll need node.js and bower already installed.  See <a href="https://nodejs.org/">nodejs.org</a> and <a href="http://bower.io/">bower.io</a> for details.)</p>
