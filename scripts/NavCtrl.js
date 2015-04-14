@@ -33,7 +33,7 @@ function($scope, $location, $modal, hotkeys) {
 	});
     
 	hotkeys.add({
-		combo: 'i',
+		combo: 'ctrl+alt+i',
 		description: 'Display the About dialog',
 		callback: function() {
 			$scope.showAbout();
