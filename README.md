@@ -2,7 +2,7 @@
 
 <p>This is the accompanying source code for the Angular Hotkeys tutorial video, by the Paired Programmers.  If you're looking for the latest source of the High Low game, switch to the master branch</p>
 
-<p>COMING SOON - Watch the tutorial on Web Storage and AngularJS for free here</p>
+<p><a href="http://youtu.be/silr0L7rJOY">Watch the tutorial on Web Storage and AngularJS for free here</a></p>
 
 <h1>Follow the Paired Programmers</h1>
 <ul>
