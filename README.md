@@ -25,6 +25,7 @@
 <p>This was originally written as a sample program for a series of tutorial videos by the Paired Programmers.  Watch them free here:</p>
 <ul>
   <li><a href="https://www.youtube.com/watch?v=I4iB0kOSmx8">Web Storage and AngularJS</a></li>
+  <li><a href="https://www.youtube.com/watch?v=silr0L7rJOY">Keyboard Shortcuts and AngularJS</a></li>
 </ul>
 
 <h1>Follow the Paired Programmers</h1>
